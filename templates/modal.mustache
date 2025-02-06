@@ -1,0 +1,106 @@
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="min-height:97.5% !important; height:auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="shareModalLabel">{{#str}} sharecourse, local_sharecourse {{/str}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center justify-content-center justify-content-md-start">
+                <div id="qrcode" class="mb-3" style="display: inline-block; width: 256px; height: 256px;"></div>
+                <br>
+                <div class="d-flex flex-row align-items-center justify-content-between p-2 mb-3"
+                     style="border: 1px solid #dee2e6; border-radius: .50rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"
+                >
+                    <a href="{{courseurl}}"
+                       class="mr-2"
+                       style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: calc(100% - 75px); display: inline-block;"
+                    >
+                        {{courseurl}}
+                    </a>
+                    <button id="copy-courseurl-button"
+                            class="btn btn-info"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="{{#str}} copy_clipboard, local_sharecourse {{/str}}"
+                    >
+                        {{#str}} copy_link, local_sharecourse {{/str}}
+                    </button>
+                </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <a  href="https://www.facebook.com/sharer/sharer.php?u={{encodedurl}}"
+                        target="_blank"
+                        title="{{#str}} share_facebook, local_sharecourse {{/str}}"
+                        class="btn mx-1"
+                        style="background-color: #007bff; color: white;"
+                    >
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a  href="https://api.whatsapp.com/send?text={{encodedurl}}"
+                        target="_blank"
+                        title="{{#str}} share_whatsapp, local_sharecourse {{/str}}"
+                        class="btn mx-1"
+                        style="background-color: #28a745; color: white;"
+                    >
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
+                    <a  href="https://www.linkedin.com/shareArticle?mini=true&url={{encodedurl}}"
+                        target="_blank"
+                        title="{{#str}} share_linkedin, local_sharecourse {{/str}}"
+                        class="btn mx-1"
+                        style="background-color: #17a2b8; color: white;"
+                    >
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a  href="mailto:?body={{encodedurl}}"
+                        title="{{#str}} share_email, local_sharecourse {{/str}}"
+                        class="btn mx-1"
+                        style="background-color: #6c757d; color: white;"
+                    >
+                        <i class="fa fa-envelope-o"></i>
+                    </a>
+                    {{#haslti}}
+                        <button id="lti-button"
+                                title="{{#str}} share_lti, local_sharecourse {{/str}}"
+                                class="btn ml-5"
+                                data-toggle="collapse"
+                                data-target="#ltiInfo"
+                                aria-expanded="false"
+                                style="background-color: #6c757d; color: white;"
+                        >
+                            LTI
+                        </button>
+                    {{/haslti}}
+                </div>
+                {{#haslti}}
+                    <div id="ltiInfo" class="collapse align-items-center mt-3">
+                        <div class="d-flex flex-row align-items-center justify-content-between w-100 p-2 mb-2" style="border: 1px solid #dee2e6; border-radius: .50rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                            <span class="mr-2" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: calc(100% - 60px); display: inline-block;">{{ltiurl}}</span>
+                            <button id="copy-ltiurl-button"
+                                    class="btn btn-info btn-sm"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="{{#str}} copy_clipboard, local_sharecourse {{/str}}"
+                            >
+                                {{#str}} copy_link, local_sharecourse {{/str}}
+                            </button>
+                        </div>
+                        <div class="d-flex flex-row align-items-center justify-content-between w-100 p-2" style="border: 1px solid #dee2e6; border-radius: .50rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                            <span class="mr-2" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: calc(100% - 60px); display: inline-block;">{{lticode}}</span>
+                            <button id="copy-lticode-button"
+                                    class="btn btn-info btn-sm"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="{{#str}} copy_clipboard, local_sharecourse {{/str}}"
+                            >
+                                {{#str}} copy_link, local_sharecourse {{/str}}
+                            </button>
+                        </div>
+                    </div>
+                {{/haslti}}
+            </div>
+        </div>
+    </div>
+</div>
