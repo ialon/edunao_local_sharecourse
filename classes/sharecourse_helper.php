@@ -78,9 +78,17 @@ class sharecourse_helper {
 
         // Set a default image when there is no image
         $courseimageurl = $OUTPUT->image_url('ogdefault', 'local_sharecourse');
+        $courseimagewidth = 666;
+        $courseimageheight = 350;
 
         if (!empty($files)) {
             $courseimage = reset($files);
+
+            // Get the image info to set the width and height.
+            $courseimageinfo = $courseimage->get_imageinfo();
+            $courseimagewidth = (int) $courseimageinfo['width'];
+            $courseimageheight = (int) $courseimageinfo['height'];
+
             $courseimageurl = moodle_url::make_pluginfile_url(
                 $courseimage->get_contextid(),
                 $courseimage->get_component(),
@@ -91,9 +99,14 @@ class sharecourse_helper {
             );
         }
 
+        // Add a random string to the image URL to avoid caching issues.
+        $courseimageurl = $courseimageurl . '?v=' . random_int(0, 1000);
+
         $output = '<meta property="og:title" content="' . $course->fullname . '" />';
         $output .= '<meta property="og:description" content="' . strip_tags($course->summary) . '" />';
         $output .= '<meta property="og:image" content="' . $courseimageurl . '" />';
+        $output .= '<meta property="og:image:width" content="' . $courseimagewidth . '" />';
+        $output .= '<meta property="og:image:height" content="' . $courseimageheight . '" />';
         $output .= '<meta property="og:url" content="' . $shareurl . '" />';
         $output .= '<meta property="og:type" content="website" />';
         $output .= '<meta property="og:logo" content="' . $OUTPUT->get_compact_logo_url() . '" />';
