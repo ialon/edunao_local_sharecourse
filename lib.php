@@ -81,6 +81,7 @@ function local_sharecourse_extend_navigation_course(navigation_node $navigation,
 
         // Call init js script.
         $PAGE->requires->js_call_amd('local_sharecourse/main', 'init', [
+            $course->fullname,
             $courseurl->out(false),
             $ltiurl,
             $lticode,

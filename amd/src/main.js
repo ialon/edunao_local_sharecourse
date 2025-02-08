@@ -6,7 +6,8 @@ define([
     'qrcode',
 ], function($, Ajax, Templates, str, QRCode) {
     return {
-        init: function(courseUrl, ltiUrl, ltiCode, hasLti) {
+        init: function(courseName, courseUrl, ltiUrl, ltiCode, hasLti) {
+            this.courseName = courseName;
             this.ltiUrl = ltiUrl;
             this.ltiCode = ltiCode;
             this.hasLti = hasLti;
@@ -53,13 +54,15 @@ define([
                 this.showModal();
             });
         },
-        showModal: function() {
+        showModal: async function() {
             // Check if the modal already exists
             let existingModal = document.getElementById('shareModal');
             if (existingModal) {
                 $('#shareModal').modal('show');
                 return;
             }
+
+            let emailbody = await str.get_string('share_email_body', 'local_sharecourse', {courseurl: this.courseUrl, coursename: this.courseName});
 
             // Prepare the context data for the template
             const context = {
@@ -68,6 +71,7 @@ define([
                 ltiurl: this.ltiUrl,
                 lticode: this.ltiCode,
                 haslti: this.hasLti,
+                emailbody: encodeURIComponent(emailbody),
             };
 
             Templates.render('local_sharecourse/modal', context).done(function(html, js) {
