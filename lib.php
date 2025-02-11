@@ -79,10 +79,20 @@ function local_sharecourse_extend_navigation_course(navigation_node $navigation,
         $sharecoursehelper = new sharecourse_helper($DB);
         $courseurl = $sharecoursehelper->get_sharecourse_url($course->id);
 
+        // Let plugins add buttons to share course modal.
+        $extendedhtml = '';
+        $pluginsfunction = get_plugins_with_function('extend_sharecourse', 'lib.php');
+        foreach ($pluginsfunction as $plugintype => $plugins) {
+            foreach ($plugins as $pluginfunction) {
+                $extendedhtml .= $pluginfunction($course, $context);
+            }
+        }
+
         // Call init js script.
         $PAGE->requires->js_call_amd('local_sharecourse/main', 'init', [
             $course->fullname,
             $courseurl->out(false),
+            $extendedhtml,
             $ltiurl,
             $lticode,
             $haslti

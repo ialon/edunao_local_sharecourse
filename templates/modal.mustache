@@ -1,5 +1,5 @@
 <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document" style="min-height:97.5% !important; height:auto;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="shareModalLabel">{{#str}} sharecourse, local_sharecourse {{/str}}</h5>
@@ -30,6 +30,7 @@
                 </div>
                 <br>
                 <div class="d-flex justify-content-center">
+                    {{{ extendedhtml }}}
                     <a  href="https://www.facebook.com/sharer/sharer.php?u={{encodedurl}}"
                         target="_blank"
                         title="{{#str}} share_facebook, local_sharecourse {{/str}}"

@@ -6,8 +6,9 @@ define([
     'qrcode',
 ], function($, Ajax, Templates, str, QRCode) {
     return {
-        init: function(courseName, courseUrl, ltiUrl, ltiCode, hasLti) {
+        init: function(courseName, courseUrl, extendedHTML, ltiUrl, ltiCode, hasLti) {
             this.courseName = courseName;
+            this.extendedHTML = extendedHTML;
             this.ltiUrl = ltiUrl;
             this.ltiCode = ltiCode;
             this.hasLti = hasLti;
@@ -68,6 +69,7 @@ define([
             const context = {
                 courseurl: this.courseUrl,
                 encodedurl: this.encodedUrl,
+                extendedhtml: this.extendedHTML,
                 ltiurl: this.ltiUrl,
                 lticode: this.ltiCode,
                 haslti: this.hasLti,
@@ -92,12 +94,22 @@ define([
                 this.addCopyEventListener('copy-courseurl-button', this.courseUrl);
                 this.addCopyEventListener('copy-ltiurl-button', this.ltiUrl);
                 this.addCopyEventListener('copy-lticode-button', this.ltiCode);
+
+                // Trigger event when modal is loaded.
+                const event = new CustomEvent("shareModalLoaded", { bubbles: true });
+                document.dispatchEvent(event);
             }.bind(this)).fail(function(ex) {
                 console.error('Failed to render template', ex);
             });
         },
         addCopyEventListener: function(buttonId, textToCopy) {
-            document.getElementById(buttonId).addEventListener('click', function() {
+            button = document.getElementById(buttonId);
+
+            if (!button) {
+                return;
+            }
+
+            button.addEventListener('click', function() {
                 let copyButton = document.getElementById(buttonId);
 
                 navigator.clipboard.writeText(textToCopy).then(async function() {
