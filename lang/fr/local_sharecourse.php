@@ -34,10 +34,10 @@ $string['share_facebook'] = 'Partage sur Facebook';
 $string['share_whatsapp'] = 'Partager sur WhatsApp';
 $string['share_linkedin'] = 'Partager sur LinkedIn';
 $string['share_email'] = 'Partager via Email';
-$string['share_email_subject'] = 'Regardez mon cours!';
-$string['share_email_body'] = 'Bonjour, je veux partager le cours que j\'ai créé avec vous.
+$string['share_email_subject'] = '{$a->coursename}';
+$string['share_email_body'] = 'Je vous invite à découvrir mon nouveau cours "{$a->coursename}"
 
-Il s\'appelle "{$a->coursename}" et vous pouvez y accéder en cliquant sur ce lien: {$a->courseurl}';
+Vous pouvez y accéder à partir de ce lien : {$a->courseurl}';
 $string['share_lti'] = 'Partager via LTI';
 
 $string['sharecourse:sharecourse'] = "Permet d'accéder à l'interface de partage de cours";

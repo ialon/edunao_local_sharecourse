@@ -63,6 +63,7 @@ define([
                 return;
             }
 
+            let emailsubject = await str.get_string('share_email_subject', 'local_sharecourse', {coursename: this.courseName});
             let emailbody = await str.get_string('share_email_body', 'local_sharecourse', {courseurl: this.courseUrl, coursename: this.courseName});
 
             // Prepare the context data for the template
@@ -73,6 +74,7 @@ define([
                 ltiurl: this.ltiUrl,
                 lticode: this.ltiCode,
                 haslti: this.hasLti,
+                emailsubject: emailsubject,
                 emailbody: encodeURIComponent(emailbody),
             };
 

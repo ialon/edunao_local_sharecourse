@@ -36,10 +36,10 @@ $string['share_facebook'] = 'Share on Facebook';
 $string['share_whatsapp'] = 'Share on WhatsApp';
 $string['share_linkedin'] = 'Share on LinkedIn';
 $string['share_email'] = 'Share via Email';
-$string['share_email_subject'] = 'Look at my course!';
-$string['share_email_body'] = 'Hello, I want to share the course I created with you.
+$string['share_email_subject'] = '{$a->coursename}';
+$string['share_email_body'] = 'You are invited to try my new course "{$a->coursename}"
 
-It\'s called "{$a->coursename}" and you can access it by clicking on this link: {$a->courseurl}';
+Click here for access: {$a->courseurl}';
 $string['share_lti'] = 'Share via LTI';
 
 $string['sharecourse:sharecourse'] = "Allows a user to access share course interface";
