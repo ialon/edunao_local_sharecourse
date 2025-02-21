@@ -34,7 +34,7 @@ define([
             shareItemClone.removeAttribute('tabindex');
             // Modify the cloned link to be an info button with the fa-share icon.
             shareItemClone.classList.remove('dropdown-item');
-            shareItemClone.classList.add('btn', 'btn-sm', 'btn-info', 'd-flex', 'align-items-center', 'ml-3');
+            shareItemClone.classList.add('btn', 'btn-sm', 'btn-info', 'float-right', 'align-items-center', 'ml-3');
             shareItemClone.style.height = 'fit-content';
             shareItemClone.innerHTML = '<i class="fa fa-share mr-2"></i> Share';
 
