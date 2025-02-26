@@ -26,21 +26,21 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Partage de cours';
-$string['share'] = 'Partager';
-$string['sharecourse'] = 'Partager le cours';
-$string['copy_link'] = 'Copier';
-$string['copy_clipboard'] = 'Copier vers presse-papiers';
-$string['copied_clipboard'] = 'Copié !';
-$string['share_facebook'] = 'Partage sur Facebook';
-$string['share_whatsapp'] = 'Partager sur WhatsApp';
-$string['share_linkedin'] = 'Partager sur LinkedIn';
-$string['share_email'] = 'Partager via Email';
+$string['pluginname'] = 'Compartir Curso';
+$string['share'] = 'Compartir';
+$string['sharecourse'] = 'Compartir Curso';
+$string['copy_link'] = 'Copiar';
+$string['copy_clipboard'] = 'Copiar al portapapeles';
+$string['copied_clipboard'] = '¡Copiado!';
+$string['share_facebook'] = 'Compartir en Facebook';
+$string['share_whatsapp'] = 'Compartir en WhatsApp';
+$string['share_linkedin'] = 'Compartir en LinkedIn';
+$string['share_email'] = 'Compartir por correo electrónico';
 $string['share_email_subject'] = '{$a->coursename}';
-$string['share_email_body'] = 'Je vous invite à découvrir mon nouveau cours "{$a->coursename}"
+$string['share_email_body'] = 'Estás invitado a mi nuevo curso "{$a->coursename}"
 
-Vous pouvez y accéder à partir de ce lien : {$a->courseurl}';
-$string['share_lti'] = 'Partager via LTI';
+Haz clic aquí para acceder: {$a->courseurl}';
+$string['share_lti'] = 'Compartir vía LTI';
 
-$string['sharecourse:sharecourse'] = "Permet d'accéder à l'interface de partage de cours";
-$string['sharecourse:sharelti'] = "Permet d'afficher le bouton 'Partage via LTI' dans l'interface de partage de cours";
+$string['sharecourse:sharecourse'] = "Permite a un usuario acceder a la interfaz de compartir curso";
+$string['sharecourse:sharelti'] = "Permite a un usuario acceder a 'Compartir vía LTI' en la interfaz de compartir curso";
