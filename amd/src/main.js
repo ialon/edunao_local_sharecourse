@@ -2,9 +2,10 @@ define([
     'jquery',
     'core/ajax',
     'core/templates',
+    'core/notification',
     'core/str',
     'qrcode',
-], function($, Ajax, Templates, str, QRCode) {
+], function($, Ajax, Templates, Notification, str, QRCode) {
     return {
         init: function(courseName, courseUrl, extendedHTML, ltiUrl, ltiCode, hasLti) {
             this.courseName = courseName;
@@ -63,8 +64,16 @@ define([
                 return;
             }
 
-            let emailsubject = await str.get_string('share_email_subject', 'local_sharecourse', {coursename: this.courseName});
-            let emailbody = await str.get_string('share_email_body', 'local_sharecourse', {courseurl: this.courseUrl, coursename: this.courseName});
+            let emailsubject = await str.get_string(
+                'share_email_subject',
+                'local_sharecourse',
+                {coursename: this.courseName}
+            );
+            let emailbody = await str.get_string(
+                'share_email_body',
+                'local_sharecourse',
+                {courseurl: this.courseUrl, coursename: this.courseName}
+            );
 
             // Prepare the context data for the template
             const context = {
@@ -100,12 +109,10 @@ define([
                 // Trigger event when modal is loaded.
                 const event = new CustomEvent("shareModalLoaded", { bubbles: true });
                 document.dispatchEvent(event);
-            }.bind(this)).fail(function(ex) {
-                console.error('Failed to render template', ex);
-            });
+            }.bind(this)).fail(Notification.exception);
         },
         addCopyEventListener: function(buttonId, textToCopy) {
-            button = document.getElementById(buttonId);
+            let button = document.getElementById(buttonId);
 
             if (!button) {
                 return;
@@ -119,9 +126,7 @@ define([
                     let copiedlabel = await str.get_string('copied_clipboard', 'local_sharecourse');
                     copyButton.setAttribute('data-original-title', copiedlabel);
                     $(copyButton).tooltip('show');
-                }).catch(function(error) {
-                    console.error('Could not copy text: ', error);
-                });
+                }).catch(Notification.exception);
 
                 // Reset tooltip title when the mouse leaves the button.
                 copyButton.addEventListener('mouseleave', async function() {
