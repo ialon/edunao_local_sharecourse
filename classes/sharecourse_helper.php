@@ -57,14 +57,11 @@ class sharecourse_helper {
     }
 
     public function get_course_metadata(int $courseid): string {
-        global $PAGE, $OUTPUT;
+        global $OUTPUT;
 
         $course = get_course($courseid);
         $shareurl = $this->get_sharecourse_url($course->id);
         $context = \context_course::instance($course->id);
-
-        $PAGE->set_context($context);
-        $PAGE->set_url($shareurl);
 
         $fs = get_file_storage();
         $files = $fs->get_area_files(
